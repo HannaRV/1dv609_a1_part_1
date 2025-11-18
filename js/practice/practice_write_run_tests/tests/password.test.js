@@ -15,11 +15,21 @@ import { Password } from '../src/Correct'
 
 describe('Password class, test suite', () => {
     //put constants here to increase readability
-    const emptyPassword = '';
+    const validPassword = 'validpassword123'
+    const anotherValidPassword = 'anothervalid456'
+    const emptyPassword = ''
+    const containsOnlyLetters = 'onlylettershere'
+    const atBoundaryLength = 'password1234'
+    const justBelowBoundaryLength = 'password123' // boundary - 1
+    const justAboveBoundaryLength = 'password12345' // boundary + 1
 
-    test('replace this test with one of your own and add more', () => {
-        expect(true).toBe(true);
-    });
+    describe('Constructor tests, length validations', () => {
 
-    //Add your tests here
-});
+        test('constructor_atBoundaryLength_createsPassword', () => {
+        const password = new Password(atBoundaryLength)
+        expect(password).toBeDefined()
+    })
+
+
+})
+})
