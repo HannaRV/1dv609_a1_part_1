@@ -34,5 +34,11 @@ describe('Password class, test suite', () => {
         test('constructor_justBelowBoundaryLength_throwsError', () => {
             expect(() => new Password(justBelowBoundaryLength)).toThrow('Too short password') // Arrow function to delay execution
         })
+
+        test('constructor_justAboveBoundaryLength_createsPassword', () => {
+            const password = new Password(justAboveBoundaryLength)
+
+            expect(password).toBeInstanceOf(Password) // Ökar inte coverage men säkerställer komplett BVA
+        })
     })
 })
