@@ -26,11 +26,13 @@ describe('Password class, test suite', () => {
     describe('Constructor tests, length validations', () => {
 
         test('constructor_atBoundaryLength_createsPassword', () => {
-        const password = new Password(atBoundaryLength)
+            const password = new Password(atBoundaryLength)
 
-        expect(password).toBeInstanceOf(Password) // verifierar att objektet skapas och är av rätt typ
+            expect(password).toBeInstanceOf(Password) // verifierar att objektet skapas och är av rätt typ
+        })
+
+        test('constructor_justBelowBoundaryLength_throwsError', () => {
+            expect(() => new Password(justBelowBoundaryLength)).toThrow('Too short password') // Arrow function to delay execution
+        })
     })
-
-
-})
 })
