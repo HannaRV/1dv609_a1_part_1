@@ -83,5 +83,12 @@ describe('Password class, test suite', () => {
 
             expect(firstPassword.getPasswordHash()).toBe(secondPassword.getPasswordHash())
         })
+
+        test('getPasswordHash_differentPasswords_returnsDifferentHashes', () => {
+            const firstPassword = new Password(validPassword)
+            const secondPassword = new Password(anotherValidPassword)
+
+            expect(firstPassword.getPasswordHash()).not.toBe(secondPassword.getPasswordHash())
+        })
     })
 })
