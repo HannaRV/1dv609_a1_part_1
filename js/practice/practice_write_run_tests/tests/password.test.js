@@ -44,8 +44,16 @@ describe('Password class, test suite', () => {
         test('constructor_emptyPassword_throwsError', () => {
             expect(() => new Password(emptyPassword)).toThrow('Too short password')
         })
-
-
-
     })
+    
+    describe('Constructor - number requirement', () => {
+
+            test('constructor_containsNumber_createsPassword', () => {
+                const password = new Password(validPassword)
+
+                expect(password).toBeInstanceOf(Password)
+            })
+
+        })
+
 })
