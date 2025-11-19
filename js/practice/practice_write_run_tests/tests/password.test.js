@@ -27,7 +27,8 @@ describe('Password class, test suite', () => {
 
         test('constructor_atBoundaryLength_createsPassword', () => {
         const password = new Password(atBoundaryLength)
-        expect(password).toBeDefined()
+
+        expect(password).toBeInstanceOf(Password) // verifierar att objektet skapas och är av rätt typ
     })
 
 
