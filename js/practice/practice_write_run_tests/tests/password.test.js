@@ -48,16 +48,25 @@ describe('Password class, test suite', () => {
 
     describe('Constructor - number requirement', () => {
 
-            test('constructor_containsNumber_createsPassword', () => {
-                const password = new Password(validPassword)
+        test('constructor_containsNumber_createsPassword', () => {
+            const password = new Password(validPassword)
 
-                expect(password).toBeInstanceOf(Password)
-            })
-
-            test('constructor_containsOnlyLetters_throwsError', () => {
-                expect(() => new Password(containsOnlyLetters)).toThrow('No number found')
-            })
-
+            expect(password).toBeInstanceOf(Password)
         })
 
+        test('constructor_containsOnlyLetters_throwsError', () => {
+            expect(() => new Password(containsOnlyLetters)).toThrow('No number found')
+        })
+
+    })
+
+    describe('getPasswordHash method', () => {
+
+        test('getPasswordHash_validPassword_returnsNumber', () => {
+            const password = new Password(validPassword)
+            const hash = password.getPasswordHash()
+
+            expect(typeof hash).toBe('number')
+        })
+    })
 })
