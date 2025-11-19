@@ -68,5 +68,13 @@ describe('Password class, test suite', () => {
 
             expect(typeof hash).toBe('number')
         })
+
+        test('getPasswordHash_sameObject_returnsConsistentHash', () => {
+            const password = new Password(validPassword)
+            const firstHash = password.getPasswordHash()
+            const secondHash = password.getPasswordHash()
+
+            expect(firstHash).toBe(secondHash)
+        })
     })
 })
