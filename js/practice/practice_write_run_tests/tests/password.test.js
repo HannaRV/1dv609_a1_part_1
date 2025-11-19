@@ -101,5 +101,12 @@ describe('Password class, test suite', () => {
             expect(firstPassword.isPasswordSame(secondPassword)).toBe(true)
 
         })
+
+        test('isPasswordSame_differentPasswords_returnsFalse', () => {
+            const firstPassword = new Password(validPassword)
+            const secondPassword = new Password(anotherValidPassword)
+
+            expect(firstPassword.isPasswordSame(secondPassword)).toBe(false)
+        })
     })
 })
