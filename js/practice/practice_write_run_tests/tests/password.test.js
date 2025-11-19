@@ -91,4 +91,15 @@ describe('Password class, test suite', () => {
             expect(firstPassword.getPasswordHash()).not.toBe(secondPassword.getPasswordHash())
         })
     })
+
+    describe('isPasswordSame method', () => {
+
+        test('isPasswordSame_identicalPasswords_returnsTrue', () => {
+            const firstPassword = new Password(validPassword)
+            const secondPassword = new Password(validPassword)
+
+            expect(firstPassword.isPasswordSame(secondPassword)).toBe(true)
+
+        })
+    })
 })
