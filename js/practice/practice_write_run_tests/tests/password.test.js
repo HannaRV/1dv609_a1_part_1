@@ -15,7 +15,7 @@ import { Password } from '../src/Correct'
 
 describe('Password class, test suite', () => {
     //put constants here to increase readability
-    const validPassword = 'validpassword123'
+    const validPassword = 'validpassword1'
     const anotherValidPassword = 'anothervalid456'
     const emptyPassword = ''
     const containsOnlyLetters = 'onlylettershere'
@@ -23,7 +23,7 @@ describe('Password class, test suite', () => {
     const justBelowBoundaryLength = 'password123' // boundary - 1
     const justAboveBoundaryLength = 'password12345' // boundary + 1
 
-    describe('Constructor tests, length validations', () => {
+    describe('Constructor - length validations', () => {
 
         test('constructor_atBoundaryLength_createsPassword', () => {
             const password = new Password(atBoundaryLength)
@@ -32,7 +32,7 @@ describe('Password class, test suite', () => {
         })
 
         test('constructor_justBelowBoundaryLength_throwsError', () => {
-            expect(() => new Password(justBelowBoundaryLength)).toThrow('Too short password') // Arrow function to delay execution
+            expect(() => new Password(justBelowBoundaryLength)).toThrow('Too short password') // Arrow function för att fördröja execution
         })
 
         test('constructor_justAboveBoundaryLength_createsPassword', () => {
@@ -40,5 +40,12 @@ describe('Password class, test suite', () => {
 
             expect(password).toBeInstanceOf(Password) // Ökar inte coverage men säkerställer komplett BVA
         })
+
+        test('constructor_emptyPassword_throwsError', () => {
+            expect(() => new Password(emptyPassword)).toThrow('Too short password')
+        })
+
+
+
     })
 })
