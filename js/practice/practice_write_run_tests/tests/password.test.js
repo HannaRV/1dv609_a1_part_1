@@ -114,5 +114,11 @@ describe('Password class, test suite', () => {
 
             expect(() => password.isPasswordSame('string')).toThrow('Invalid argument')
         })
+
+        test('isPasswordSame_nullArgument_throwsError', () => {
+            const password = new Password(validPassword)
+
+            expect(() => password.isPasswordSame(null)).toThrow('Invalid argument')
+        })
     })
 })
