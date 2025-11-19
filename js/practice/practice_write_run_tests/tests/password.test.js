@@ -76,5 +76,12 @@ describe('Password class, test suite', () => {
 
             expect(firstHash).toBe(secondHash)
         })
+
+        test('getPasswordHash_identicalPasswords_returnSameHash', () => {
+            const firstPassword = new Password(validPassword)
+            const secondPassword = new Password(validPassword)
+
+            expect(firstPassword.getPasswordHash()).toBe(secondPassword.getPasswordHash())
+        })
     })
 })
