@@ -6,6 +6,7 @@
 // import { SSNHelper } from '../src/bugs/BuggySSNHelperAllowMonth0'
 // import { SSNHelper } from '../src/bugs/BuggySSNHelperAllowDayUpTo30'
 // import { SSNHelper } from '../src/bugs/BuggySSNHelperMessyLuhn
+// import { SSNHelper } from '../src/bugs/BuggySSNHelperAllowMonth13' // egen tillagd byggsy fil
 
 
 describe('SSNHelper Test suite', () => {
@@ -60,6 +61,16 @@ describe('SSNHelper Test suite', () => {
             const helper = new SSNHelper()
 
             expect(helper.isValidMonth(monthAboveBoundary)).toBe(false)
+        })
+    })
+
+    describe('isValidDay Method', () => {
+
+        test('isValidDay_day31_returnTrue', () =>{
+            const helper = new SSNHelper()
+
+            expect(helper.isValidDay(anotherValidDay)).toBe(true)
+
         })
     })
 
