@@ -1,9 +1,9 @@
 
 
-// import { SSNHelper } from '../src/correct/SSNHelper'
+ import { SSNHelper } from '../src/correct/SSNHelper'
 // import { SSNHelper } from '../src/bugs/BuggySSNHelperWrongLength'
 // import { SSNHelper } from '../src/bugs/BuggySSNHelperIncorrectFormat'
- import { SSNHelper } from '../src/bugs/BuggySSNHelperAllowMonth0'
+// import { SSNHelper } from '../src/bugs/BuggySSNHelperAllowMonth0'
 // import { SSNHelper } from '../src/bugs/BuggySSNHelperAllowDayUpTo30'
 // import { SSNHelper } from '../src/bugs/BuggySSNHelperMessyLuhn'
 
@@ -58,5 +58,13 @@ describe('SSNHelper Test suite', () => {
         })
     })
 
+    describe('isValidDay Method', () => {
 
+        test('isValidDay_day31_returnTrue', () =>{
+            const helper = new SSNHelper()
+
+            expect(helper.isValidDay(anotherValidDay)).toBe(true)
+
+        })
+    })
 })
