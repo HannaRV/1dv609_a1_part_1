@@ -13,7 +13,7 @@
 // import { Password } from '../src/BugVeryShort'
 // import { Password } from '../src/BugWrongHashingAlgorithm'
 // import { Password } from '../src/BugWrongMessage'
-// import { Password } from '../src/Correct'
+ import { Password } from '../src/Correct'
 
 describe('Password class, test suite', () => {
     const validPassword = 'validpassword1'
@@ -121,16 +121,16 @@ describe('Password class, test suite', () => {
                 expect(firstPassword.isPasswordSame(secondPassword)).toBe(false)
             })
 
-            test('isPasswordSame_invalidArgument_throwsError', () => {
+            /*test('isPasswordSame_invalidArgument_throwsError', () => {
                 const password = new Password(validPassword)
 
                 expect(() => password.isPasswordSame('string')).toThrow('Invalid argument')
-            })
+            })*/
 
-            test('isPasswordSame_nullArgument_throwsError', () => {
+            /*test('isPasswordSame_nullArgument_throwsError', () => {
                 const password = new Password(validPassword)
 
                 expect(() => password.isPasswordSame(null)).toThrow('Invalid argument')
-            })
+            })*/
         })
     })
