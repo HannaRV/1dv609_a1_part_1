@@ -1,10 +1,10 @@
 
-// import { SSNHelper } from '../src/correct/SSNHelper'
- import { SSNHelper } from '../src/bugs/BuggySSNHelperAllowDayUpTo30'
+ import { SSNHelper } from '../src/correct/SSNHelper'
+// import { SSNHelper } from '../src/bugs/BuggySSNHelperAllowDayUpTo30'
 // import { SSNHelper } from '../src/bugs/BuggySSNHelperAllowMonth0'
 // import { SSNHelper } from '../src/bugs/BuggySSNHelperIncorrectFormat'
 // import { SSNHelper } from '../src/bugs/BuggySSNHelperMessyLuhn'
-// import { SSNHelper } from '../src/bugs/BuggySSNHelperWrongLength'
+//import { SSNHelper } from '../src/bugs/BuggySSNHelperWrongLength'
 
 
 describe('SSNHelper Tests', () => {
@@ -29,6 +29,11 @@ describe('SSNHelper Tests', () => {
 
             expect(helper.isCorrectLength(validSSN)).toBe(true)
         })
-    })
 
+        test('isCorrectLength_tooLongSSN_returnsFalse', () => {
+            const helper = new SSNHelper()
+
+            expect(helper.isCorrectLength(tooLongSSN)).toBe(false)
+        })
+    })
 })
