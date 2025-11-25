@@ -1,5 +1,5 @@
 
- import { SSNHelper } from '../src/correct/SSNHelper'
+import { SSNHelper } from '../src/correct/SSNHelper'
 // import { SSNHelper } from '../src/bugs/BuggySSNHelperAllowDayUpTo30'
 // import { SSNHelper } from '../src/bugs/BuggySSNHelperAllowMonth0'
 // import { SSNHelper } from '../src/bugs/BuggySSNHelperIncorrectFormat'
@@ -34,6 +34,16 @@ describe('SSNHelper Tests', () => {
             const helper = new SSNHelper()
 
             expect(helper.isCorrectLength(tooLongSSN)).toBe(false)
+        })
+    })
+
+    describe('isCorrectFormat Method', () => {
+
+        test('isCorrectFormat_invalidFormat_returnsFalse', () => {
+            const helper = new SSNHelper()
+
+            expect(helper.isCorrectFormat(invalidFormat)).toBe(false)
+
         })
     })
 })
