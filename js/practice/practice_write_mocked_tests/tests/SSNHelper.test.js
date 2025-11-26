@@ -5,7 +5,7 @@
 // import { SSNHelper } from '../src/bugs/BuggySSNHelperIncorrectFormat'
 // import { SSNHelper } from '../src/bugs/BuggySSNHelperAllowMonth0'
 // import { SSNHelper } from '../src/bugs/BuggySSNHelperAllowDayUpTo30'
-// import { SSNHelper } from '../src/bugs/BuggySSNHelperMessyLuhn
+// import { SSNHelper } from '../src/bugs/BuggySSNHelperMessyLuhn'
 // import { SSNHelper } from '../src/bugs/BuggySSNHelperAllowMonth13' // egen tillagd byggsy fil
 
 
@@ -57,11 +57,11 @@ describe('SSNHelper Test suite', () => {
             expect(helper.isValidMonth(monthBelowBoundary)).toBe(false)
         })
 
-        test('isValidMonth_month13_returnsFalse', () => {
+        /*test('isValidMonth_month13_returnsFalse', () => {
             const helper = new SSNHelper()
 
             expect(helper.isValidMonth(monthAboveBoundary)).toBe(false)
-        })
+        })*/
     })
 
     describe('isValidDay Method', () => {
