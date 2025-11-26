@@ -21,9 +21,9 @@ describe('Password class, test suite', () => {
     const emptyPassword = ''
     const passwordWithSpaces = '   validpassword1   '
     const containsOnlyLetters = 'onlylettershere'
-    const atBoundaryLength = 'password1234'
-    const justBelowBoundaryLength = 'password123' // boundary - 1
-    const justAboveBoundaryLength = 'password12345' // boundary + 1
+    const atBoundaryMinLength = 'password1234'
+    const justBelowBoundaryMinLength = 'password123' // boundary - 1
+    const justAboveBoundaryMinLength = 'password12345' // boundary + 1
 
     describe('Constructor - trim behavior', () => {
 
@@ -38,18 +38,17 @@ describe('Password class, test suite', () => {
         describe('Constructor - length validations', () => {
 
             /*test('constructor_atBoundaryLength_createsPassword', () => {
-                const password = new Password(atBoundaryLength)
+                const password = new Password(atBoundaryMinLength)
 
                 expect(password).toBeInstanceOf(Password) // verifierar att objektet skapas och är av rätt typ
             })*/
 
-            test('constructor_justBelowBoundaryLength_throwsError', () => {
-                expect(() => new Password(justBelowBoundaryLength)).toThrow('Too short password') // Arrow function för att fördröja execution
+            test('constructor_justBelowBoundaryMinLength_throwsError', () => {
+                expect(() => new Password(justBelowBoundaryMinLength)).toThrow('Too short password') // Arrow function för att fördröja execution
             })
 
-            /*test('constructor_justAboveBoundaryLength_createsPassword', () => {
-                const password = new Password(justAboveBoundaryLength)
-
+            /*test('constructor_justAboveBoundaryMinLength_createsPassword', () => {
+                const password = new Password(justAboveBoundaryMinLength)
                 expect(password).toBeInstanceOf(Password) // Ökar inte coverage men säkerställer komplett BVA
             })*/
 
