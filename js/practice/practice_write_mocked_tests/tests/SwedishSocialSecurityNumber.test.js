@@ -1,8 +1,8 @@
- import { jest } from '@jest/globals'
- import { SwedishSocialSecurityNumber } from '../src/correct/SwedishSocialSecurityNumber'
+import { expect, jest } from '@jest/globals'
+// import { SwedishSocialSecurityNumber } from '../src/correct/SwedishSocialSecurityNumber'
 // import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecurityNumberNoTrim'
 // import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecurityNumberNoLenCheck'
-// import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecurityNumberNoLuhn'
+ import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecurityNumberNoLuhn'
 // import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecurityNumberWrongYear'
 
 describe('SwedishSocialSecurityNumber Test suite', () => {
@@ -35,6 +35,13 @@ describe('SwedishSocialSecurityNumber Test suite', () => {
             const ssn = new SwedishSocialSecurityNumber(validSSNWithWhitespace, mockHelper)
 
             expect(mockHelper.isCorrectFormat).toHaveBeenCalledWith('811228-9874')
+        })
+
+        test('constructor_InvalidLuhn_throwsError', () => {
+            mockHelper.luhnisCorrect.mockReturnValue(false)
+
+            expect(() => { new SwedishSocialSecurityNumber(validSSN, mockHelper) })
+                .toThrow("Invalid SSN according to Luhn's algorithm")
         })
     })
 })
