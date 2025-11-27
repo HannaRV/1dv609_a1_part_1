@@ -57,11 +57,11 @@ describe('SSNHelper Test suite', () => {
             expect(helper.isValidMonth(monthBelowBoundary)).toBe(false)
         })
 
-        /*test('isValidMonth_month13_returnsFalse', () => {
+        test('isValidMonth_month13_returnsFalse', () => {
             const helper = new SSNHelper()
 
             expect(helper.isValidMonth(monthAboveBoundary)).toBe(false)
-        })*/
+        })
     })
 
     describe('isValidDay Method', () => {

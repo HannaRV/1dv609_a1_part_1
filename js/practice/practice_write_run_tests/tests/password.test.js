@@ -1,8 +1,5 @@
 
-// Select one of the Password versions to test
-
-// import { Password } from '../src/BugNoArgumentValidation' // egen buggfil
-
+ import { Password } from '../src/Correct'
 // import { Password } from '../src/BugDoesNotHash'
 // import { Password } from '../src/BugDoesNotTrim'
 // import { Password } from '../src/BugisPasswordAlwaysSame'
@@ -13,7 +10,8 @@
 // import { Password } from '../src/BugVeryShort'
 // import { Password } from '../src/BugWrongHashingAlgorithm'
 // import { Password } from '../src/BugWrongMessage'
- import { Password } from '../src/Correct'
+// import { Password } from '../src/BugNoArgumentValidation' // egen buggfil
+
 
 describe('Password class, test suite', () => {
     const validPassword = 'validpassword1'
@@ -49,6 +47,7 @@ describe('Password class, test suite', () => {
 
             /*test('constructor_justAboveBoundaryMinLength_createsPassword', () => {
                 const password = new Password(justAboveBoundaryMinLength)
+                
                 expect(password).toBeInstanceOf(Password) // Ökar inte coverage men säkerställer komplett BVA
             })*/
 
@@ -120,11 +119,11 @@ describe('Password class, test suite', () => {
                 expect(firstPassword.isPasswordSame(secondPassword)).toBe(false)
             })
 
-            /*test('isPasswordSame_invalidArgument_throwsError', () => {
+            test('isPasswordSame_invalidArgument_throwsError', () => {
                 const password = new Password(validPassword)
 
                 expect(() => password.isPasswordSame('string')).toThrow('Invalid argument')
-            })*/
+            })
 
             /*test('isPasswordSame_nullArgument_throwsError', () => {
                 const password = new Password(validPassword)
