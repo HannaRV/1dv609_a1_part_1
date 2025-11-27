@@ -1,8 +1,8 @@
-import { expect, jest } from '@jest/globals'
+import { expect, jest, test } from '@jest/globals'
 // import { SwedishSocialSecurityNumber } from '../src/correct/SwedishSocialSecurityNumber'
 // import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecurityNumberNoTrim'
-// import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecurityNumberNoLenCheck'
- import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecurityNumberNoLuhn'
+ import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecurityNumberNoLenCheck'
+// import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecurityNumberNoLuhn'
 // import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecurityNumberWrongYear'
 
 describe('SwedishSocialSecurityNumber Test suite', () => {
@@ -42,6 +42,13 @@ describe('SwedishSocialSecurityNumber Test suite', () => {
 
             expect(() => { new SwedishSocialSecurityNumber(validSSN, mockHelper) })
                 .toThrow("Invalid SSN according to Luhn's algorithm")
+        })
+
+        test('constructor_InvalidLength_throwsError', () => {
+            mockHelper.isNotCorrectLength.mockReturnValue(true)
+
+            expect(() => { new SwedishSocialSecurityNumber(validSSN, mockHelper) })
+                .toThrow("To short, must be 11 characters")
         })
     })
 })
