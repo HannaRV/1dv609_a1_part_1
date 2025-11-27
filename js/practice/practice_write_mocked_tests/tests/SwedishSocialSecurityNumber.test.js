@@ -1,9 +1,9 @@
 import { expect, jest, test } from '@jest/globals'
 // import { SwedishSocialSecurityNumber } from '../src/correct/SwedishSocialSecurityNumber'
 // import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecurityNumberNoTrim'
- import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecurityNumberNoLenCheck'
+// import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecurityNumberNoLenCheck'
 // import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecurityNumberNoLuhn'
-// import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecurityNumberWrongYear'
+ import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecurityNumberWrongYear'
 
 describe('SwedishSocialSecurityNumber Test suite', () => {
     const validSSN = '811228-9874'
@@ -49,6 +49,15 @@ describe('SwedishSocialSecurityNumber Test suite', () => {
 
             expect(() => { new SwedishSocialSecurityNumber(validSSN, mockHelper) })
                 .toThrow("To short, must be 11 characters")
+        })
+    })
+
+    describe('getYear Method', () => {
+
+        test('getYear_ValidSSN_returnsCorrectYear', () => {
+            const ssn = new SwedishSocialSecurityNumber(validSSN, mockHelper)
+
+            expect(ssn.getYear()).toBe('81')
         })
     })
 })
