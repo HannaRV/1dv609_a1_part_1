@@ -16,8 +16,8 @@ describe('SSNHelper Test suite', () => {
     const invalidFormat = '8112289874'
     const validMonth = '01'
     const anotherValidMonth = '12'
-    const monthAboveBoundary = '13'
-    const monthBelowBoundary = '00'
+    const invalidMonthAboveBoundary = '13'
+    const invalidMonthBelowBoundary = '00'
     const validDay = '01'
     const anotherValidDay = '31'
     const invalidDayAboveBoundary = '32'
@@ -66,13 +66,13 @@ describe('SSNHelper Test suite', () => {
         test('isValidMonth_monthZero_returnsFalse', () => {
             const sut = new SSNHelper()
 
-            expect(sut.isValidMonth(monthBelowBoundary)).toBe(false)
+            expect(sut.isValidMonth(invalidMonthBelowBoundary)).toBe(false)
         })
 
         test('isValidMonth_month13_returnsFalse', () => {
             const sut = new SSNHelper()
 
-            expect(sut.isValidMonth(monthAboveBoundary)).toBe(false)
+            expect(sut.isValidMonth(invalidMonthAboveBoundary)).toBe(false)
         })
 
         test('isValidMonth_month01_returnTrue', () => {
@@ -90,11 +90,29 @@ describe('SSNHelper Test suite', () => {
 
     describe('isValidDay Method', () => {
 
-        test('isValidDay_day31_returnTrue', () => {
+        test('isValidDay_dayAtMinBoundary_returnTrue', () => {
+            const sut = new SSNHelper()
+
+            expect(sut.isValidDay(validDay)).toBe(true)
+        })
+
+        test('isValidDay_dayBelowMinBoundary_returnFalse', () => {
+            const sut = new SSNHelper()
+
+            expect(sut.isValidDay(invalidDayBelowBoundary)).toBe(false)
+        })
+
+        test('isValidDay_dayAtMaxBoundary_returnTrue', () => {
             const sut = new SSNHelper()
 
             expect(sut.isValidDay(anotherValidDay)).toBe(true)
 
+        })
+
+        test('isValidDay_dayAboveMaxBoundary_returnFalse', () => {
+            const sut = new SSNHelper()
+
+            expect(sut.isValidDay(invalidDayAboveBoundary)).toBe(false)
         })
     })
 
