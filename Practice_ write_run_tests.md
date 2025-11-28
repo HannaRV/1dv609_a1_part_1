@@ -59,6 +59,3 @@ Create a table like this one for all the bugs and Tests, showing which test fail
 | Test name 2 | ✅ | ✅ | ❌ | ✅ | ✅ |
 | Test name 3 | ✅ | ✅ | ❌ | ❌ | ✅ |
 | Coverage | 100% | 100% | 100% | 100% | 100% |
-
-
-

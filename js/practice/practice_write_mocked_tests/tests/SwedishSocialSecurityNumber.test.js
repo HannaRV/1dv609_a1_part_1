@@ -21,7 +21,6 @@ describe('SwedishSocialSecurityNumber Test suite', () => {
     beforeEach(() => {
         mockHelper = {
             isCorrectLength: jest.fn().mockReturnValue(true),
-            isNotCorrectLength: jest.fn().mockReturnValue(false),
             isCorrectFormat: jest.fn().mockReturnValue(true),
             isValidMonth: jest.fn().mockReturnValue(true),
             isValidDay: jest.fn().mockReturnValue(true),
@@ -44,7 +43,7 @@ describe('SwedishSocialSecurityNumber Test suite', () => {
         })
 
         test('constructor_InvalidLength_throwsError', () => {
-            mockHelper.isNotCorrectLength.mockReturnValue(true)
+            mockHelper.isCorrectLength.mockReturnValue(false)
 
             expect(() => { new SwedishSocialSecurityNumber(tooShortSSN, mockHelper) })
                 .toThrow("To short, must be 11 characters")
