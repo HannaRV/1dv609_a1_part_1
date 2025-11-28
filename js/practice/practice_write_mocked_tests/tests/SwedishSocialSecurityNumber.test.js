@@ -9,12 +9,7 @@ import { SwedishSocialSecurityNumber } from '../src/correct/SwedishSocialSecurit
 describe('SwedishSocialSecurityNumber Test suite', () => {
     const validSSN = '811228-9874'
     const validSSNWithWhitespace = '  811228-9874  '
-    const tooShortSSN = '811228-987'
-    const invalidFormat = '8112289874'
-    const invalidLuhnSSN = '811228-9875'
-    const monthBelowBoundary = '00'
-    const invalidDayAboveBoundary = '32'
-
+    const anySSN = '811228-9874' // Mocken styr beteendet
 
     let mockHelper
 
@@ -31,69 +26,86 @@ describe('SwedishSocialSecurityNumber Test suite', () => {
     describe('Constructor', () => {
 
         test('constructor_validSSN_createsInstance', () => {
-            const ssn = new SwedishSocialSecurityNumber(validSSN, mockHelper)
+            const sut = new SwedishSocialSecurityNumber(validSSN, mockHelper)
 
-            expect(ssn).toBeInstanceOf(SwedishSocialSecurityNumber)
+            expect(sut).toBeInstanceOf(SwedishSocialSecurityNumber)
         })
 
-        test('constructor_UntrimmedSSN_trimsThenValidates', () => {
-            const ssn = new SwedishSocialSecurityNumber(validSSNWithWhitespace, mockHelper)
+        test('constructor_untrimmedSSN_trimsThenValidates', () => {
+            const sut = new SwedishSocialSecurityNumber(validSSNWithWhitespace, mockHelper)
 
             expect(mockHelper.isCorrectFormat).toHaveBeenCalledWith('811228-9874')
         })
 
-        test('constructor_InvalidLength_throwsError', () => {
+        test('constructor_invalidLength_throwsError', () => {
             mockHelper.isCorrectLength.mockReturnValue(false)
 
-            expect(() => { new SwedishSocialSecurityNumber(tooShortSSN, mockHelper) })
+            expect(() => new SwedishSocialSecurityNumber(anySSN, mockHelper))
                 .toThrow("To short, must be 11 characters")
         })
 
-        test('constructor_InvalidFormat_throwsError', () => {
+        test('constructor_invalidFormat_throwsError', () => {
             mockHelper.isCorrectFormat.mockReturnValue(false)
 
-            expect(() => { new SwedishSocialSecurityNumber(invalidFormat, mockHelper) })
+            expect(() => new SwedishSocialSecurityNumber(anySSN, mockHelper))
                 .toThrow("Incorrect format, must be: YYMMDD-XXXX")
         })
 
-        test('constructor_InvalidMonth_throwsError', () => {
+        test('constructor_invalidMonth_throwsError', () => {
             mockHelper.isValidMonth.mockReturnValue(false)
 
-            expect(() => { new SwedishSocialSecurityNumber(monthBelowBoundary, mockHelper) })
+            expect(() => new SwedishSocialSecurityNumber(anySSN, mockHelper))
                 .toThrow("Invalid month in SSN")
         })
 
-        test('constructor_InvalidDay_throwsError', () => {
+        test('constructor_invalidDay_throwsError', () => {
             mockHelper.isValidDay.mockReturnValue(false)
 
-            expect(() => { new SwedishSocialSecurityNumber(invalidDayAboveBoundary, mockHelper) })
+            expect(() => new SwedishSocialSecurityNumber(anySSN, mockHelper))
                 .toThrow("Invalid day in SSN")
         })
 
-        test('constructor_InvalidLuhn_throwsError', () => {
+        test('constructor_invalidLuhn_throwsError', () => {
             mockHelper.luhnisCorrect.mockReturnValue(false)
 
-            expect(() => { new SwedishSocialSecurityNumber(invalidLuhnSSN, mockHelper) })
+            expect(() => new SwedishSocialSecurityNumber(anySSN, mockHelper))
                 .toThrow("Invalid SSN according to Luhn's algorithm")
         })
     })
 
-    describe('getYear Method', () => {
+    describe('getYear method', () => {
 
-        test('getYear_ValidSSN_returnsCorrectYear', () => {
-            const ssn = new SwedishSocialSecurityNumber(validSSN, mockHelper)
+        test('getYear_validSSN_returnsCorrectYear', () => {
+            const sut = new SwedishSocialSecurityNumber(validSSN, mockHelper)
 
-            expect(ssn.getYear()).toBe('81')
+            expect(sut.getYear()).toBe('81')
         })
     })
 
-    describe('getSerialNumber Method', () => {
+    describe('getMonth method', () => {
 
-        test('getSerialNumber_ValidSSN_returnsCorrectSerialNumber', () => {
-            const ssn = new SwedishSocialSecurityNumber(validSSN, mockHelper)
+        test('getMonth_validSSN_returnsCorrectMonth', () => {
+            const sut = new SwedishSocialSecurityNumber(validSSN, mockHelper)
 
-            expect(ssn.getSerialNumber()).toBe('9874')
+            expect(sut.getMonth()).toBe('12')
         })
     })
 
+    describe('getDay method', () => {
+
+        test('getDay_validSSN_returnsCorrectDay', () => {
+            const sut = new SwedishSocialSecurityNumber(validSSN, mockHelper)
+
+            expect(sut.getDay()).toBe('28')
+        })
+    })
+
+    describe('getSerialNumber method', () => {
+
+        test('getSerialNumber_validSSN_returnsCorrectSerialNumber', () => {
+            const sut = new SwedishSocialSecurityNumber(validSSN, mockHelper)
+
+            expect(sut.getSerialNumber()).toBe('9874')
+        })
+    })
 })

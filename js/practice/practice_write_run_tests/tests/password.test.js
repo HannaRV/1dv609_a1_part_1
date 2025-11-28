@@ -48,7 +48,7 @@ describe('Password class, test suite', () => {
             /*test('constructor_justAboveBoundaryMinLength_createsPassword', () => {
                 const password = new Password(justAboveBoundaryMinLength)
                 
-                expect(password).toBeInstanceOf(Password) // Ökar inte coverage men säkerställer komplett BVA
+                expect(password).toBeInstanceOf(Password)
             })*/
 
             /*test('constructor_emptyPassword_throwsError', () => {
