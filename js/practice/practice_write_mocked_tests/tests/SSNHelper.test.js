@@ -123,5 +123,11 @@ describe('SSNHelper Test suite', () => {
 
             expect(sut.luhnisCorrect(validSSN)).toBe(true)
         })
+
+        test('luhnisCorrect_invalidLuhn_returnsFalse', () => {
+            const sut = new SSNHelper()
+
+            expect(sut.luhnisCorrect(invalidLuhnSSN)).toBe(false)
+        })
     })
 })
