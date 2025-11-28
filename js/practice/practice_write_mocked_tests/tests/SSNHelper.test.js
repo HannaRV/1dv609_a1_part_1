@@ -1,6 +1,6 @@
 
 
- import { SSNHelper } from '../src/correct/SSNHelper'
+import { SSNHelper } from '../src/correct/SSNHelper'
 // import { SSNHelper } from '../src/bugs/BuggySSNHelperWrongLength'
 // import { SSNHelper } from '../src/bugs/BuggySSNHelperIncorrectFormat'
 // import { SSNHelper } from '../src/bugs/BuggySSNHelperAllowMonth0'
@@ -74,11 +74,23 @@ describe('SSNHelper Test suite', () => {
 
             expect(sut.isValidMonth(monthAboveBoundary)).toBe(false)
         })
+
+        test('isValidMonth_month01_returnTrue', () => {
+            const sut = new SSNHelper()
+
+            expect(sut.isValidMonth(validMonth)).toBe(true)
+        })
+
+        test('isValidMonth_month12_returnTrue', () => {
+            const sut = new SSNHelper()
+
+            expect(sut.isValidMonth(anotherValidMonth)).toBe(true)
+        })
     })
 
     describe('isValidDay Method', () => {
 
-        test('isValidDay_day31_returnTrue', () =>{
+        test('isValidDay_day31_returnTrue', () => {
             const sut = new SSNHelper()
 
             expect(sut.isValidDay(anotherValidDay)).toBe(true)
