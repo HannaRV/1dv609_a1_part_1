@@ -47,6 +47,12 @@ describe('SSNHelper Test suite', () => {
 
     describe('isCorrectFormat Method', () => {
 
+        test('isCorrectFormat_validFormat_returnsTrue', () => {
+            const sut = new SSNHelper()
+
+            expect(sut.isCorrectFormat(validSSN)).toBe(true)
+        })
+
         test('isCorrectFormat_invalidFormat_returnsFalse', () => {
             const sut = new SSNHelper()
 
