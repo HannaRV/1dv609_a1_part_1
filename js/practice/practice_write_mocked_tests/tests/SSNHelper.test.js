@@ -27,24 +27,30 @@ describe('SSNHelper Test suite', () => {
     describe('isCorrectLength method', () => {
 
         test('isCorrectLength_validLength_returnsTrue', () => {
-            const helper = new SSNHelper()
+            const sut = new SSNHelper()
 
-            expect(helper.isCorrectLength(validSSN)).toBe(true)
+            expect(sut.isCorrectLength(validSSN)).toBe(true)
         })
 
         test('isCorrectLength_tooLongSSN_returnsFalse', () => {
-            const helper = new SSNHelper()
+            const sut = new SSNHelper()
 
-            expect(helper.isCorrectLength(tooLongSSN)).toBe(false)
+            expect(sut.isCorrectLength(tooLongSSN)).toBe(false)
+        })
+
+        test('isCorrectLength_tooShortSSN_returnFalse', () => {
+            const sut = new SSNHelper()
+
+            expect(sut.isCorrectLength(tooShortSSN)).toBe(false)
         })
     })
 
     describe('isCorrectFormat Method', () => {
 
         test('isCorrectFormat_invalidFormat_returnsFalse', () => {
-            const helper = new SSNHelper()
+            const sut = new SSNHelper()
 
-            expect(helper.isCorrectFormat(invalidFormat)).toBe(false)
+            expect(sut.isCorrectFormat(invalidFormat)).toBe(false)
 
         })
     })
@@ -52,24 +58,24 @@ describe('SSNHelper Test suite', () => {
     describe('isValidMonth Method', () => {
 
         test('isValidMonth_monthZero_returnsFalse', () => {
-            const helper = new SSNHelper()
+            const sut = new SSNHelper()
 
-            expect(helper.isValidMonth(monthBelowBoundary)).toBe(false)
+            expect(sut.isValidMonth(monthBelowBoundary)).toBe(false)
         })
 
         test('isValidMonth_month13_returnsFalse', () => {
-            const helper = new SSNHelper()
+            const sut = new SSNHelper()
 
-            expect(helper.isValidMonth(monthAboveBoundary)).toBe(false)
+            expect(sut.isValidMonth(monthAboveBoundary)).toBe(false)
         })
     })
 
     describe('isValidDay Method', () => {
 
         test('isValidDay_day31_returnTrue', () =>{
-            const helper = new SSNHelper()
+            const sut = new SSNHelper()
 
-            expect(helper.isValidDay(anotherValidDay)).toBe(true)
+            expect(sut.isValidDay(anotherValidDay)).toBe(true)
 
         })
     })
@@ -77,9 +83,9 @@ describe('SSNHelper Test suite', () => {
     describe('luhnisCorrect', () => {
 
         test('luhnisCorrect_validSSN_returnTrue', () => {
-            const helper = new SSNHelper()
+            const sut = new SSNHelper()
 
-            expect(helper.luhnisCorrect(validSSN)).toBe(true)
+            expect(sut.luhnisCorrect(validSSN)).toBe(true)
         })
     })
 })
