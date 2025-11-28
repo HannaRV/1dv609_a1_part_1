@@ -16,12 +16,12 @@ describe('SSNHelper Test suite', () => {
     const invalidFormat = '8112289874'
     const validMonth = '01'
     const anotherValidMonth = '12'
-    const invalidMonthAboveBoundary = '13'
-    const invalidMonthBelowBoundary = '00'
+    const invalidMonthAboveMaxBoundary = '13'
+    const invalidMonthBelowMinBoundary = '00'
     const validDay = '01'
     const anotherValidDay = '31'
-    const invalidDayAboveBoundary = '32'
-    const invalidDayBelowBoundary = '00'
+    const invalidDayAboveMaxBoundary = '32'
+    const invalidDayBelowMinBoundary = '00'
     const invalidLuhnSSN = '811228-9875'
 
     describe('isCorrectLength method', () => {
@@ -63,28 +63,28 @@ describe('SSNHelper Test suite', () => {
 
     describe('isValidMonth Method', () => {
 
-        test('isValidMonth_monthZero_returnsFalse', () => {
-            const sut = new SSNHelper()
-
-            expect(sut.isValidMonth(invalidMonthBelowBoundary)).toBe(false)
-        })
-
-        test('isValidMonth_month13_returnsFalse', () => {
-            const sut = new SSNHelper()
-
-            expect(sut.isValidMonth(invalidMonthAboveBoundary)).toBe(false)
-        })
-
-        test('isValidMonth_month01_returnTrue', () => {
+        test('isValidMonth_monthAtMinBoundary_returnTrue', () => {
             const sut = new SSNHelper()
 
             expect(sut.isValidMonth(validMonth)).toBe(true)
         })
 
-        test('isValidMonth_month12_returnTrue', () => {
+        test('isValidMonth_monthBelowMinBoundary_returnsFalse', () => {
+            const sut = new SSNHelper()
+
+            expect(sut.isValidMonth(invalidMonthBelowMinBoundary)).toBe(false)
+        })
+
+        test('isValidMonth_monthAtMaxBoundary_returnTrue', () => {
             const sut = new SSNHelper()
 
             expect(sut.isValidMonth(anotherValidMonth)).toBe(true)
+        })
+
+        test('isValidMonth_monthAboveMaxBoundary_returnsFalse', () => {
+            const sut = new SSNHelper()
+
+            expect(sut.isValidMonth(invalidMonthAboveMaxBoundary)).toBe(false)
         })
     })
 
@@ -99,7 +99,7 @@ describe('SSNHelper Test suite', () => {
         test('isValidDay_dayBelowMinBoundary_returnFalse', () => {
             const sut = new SSNHelper()
 
-            expect(sut.isValidDay(invalidDayBelowBoundary)).toBe(false)
+            expect(sut.isValidDay(invalidDayBelowMinBoundary)).toBe(false)
         })
 
         test('isValidDay_dayAtMaxBoundary_returnTrue', () => {
@@ -112,7 +112,7 @@ describe('SSNHelper Test suite', () => {
         test('isValidDay_dayAboveMaxBoundary_returnFalse', () => {
             const sut = new SSNHelper()
 
-            expect(sut.isValidDay(invalidDayAboveBoundary)).toBe(false)
+            expect(sut.isValidDay(invalidDayAboveMaxBoundary)).toBe(false)
         })
     })
 
