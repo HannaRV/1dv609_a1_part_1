@@ -1,6 +1,6 @@
 
 
- import { SSNHelper } from '../src/correct/SSNHelper'
+import { SSNHelper } from '../src/correct/SSNHelper'
 // import { SSNHelper } from '../src/bugs/BuggySSNHelperWrongLength'
 // import { SSNHelper } from '../src/bugs/BuggySSNHelperIncorrectFormat'
 // import { SSNHelper } from '../src/bugs/BuggySSNHelperAllowMonth0'
@@ -14,15 +14,19 @@ describe('SSNHelper Test suite', () => {
     const tooLongSSN = '811228-98745'
     const tooShortSSN = '811228-987'
     const invalidFormat = '8112289874'
-    const validMonth = '01'
-    const anotherValidMonth = '12'
-    const invalidMonthAboveMaxBoundary = '13'
-    const invalidMonthBelowMinBoundary = '00'
-    const validDay = '01'
-    const anotherValidDay = '31'
-    const invalidDayAboveMaxBoundary = '32'
-    const invalidDayBelowMinBoundary = '00'
+
+    const monthAtMinBoundary = '01'
+    const monthAtMaxBoundary = '12'
+    const monthAboveMaxBoundary = '13' // boundary + 1
+    const monthBelowMinBoundary = '00' // boundary - 1
+
+    const dayAtMinBoundary = '01'
+    const dayAtMaxBoundary = '31'
+    const dayAboveMaxBoundary = '32' // boundary + 1
+    const dayBelowMinBoundary = '00' // boundary - 1
+
     const invalidLuhnSSN = '811228-9875'
+
 
     describe('isCorrectLength method', () => {
 
@@ -45,7 +49,7 @@ describe('SSNHelper Test suite', () => {
         })*/
     })
 
-    describe('isCorrectFormat Method', () => {
+    describe('isCorrectFormat method', () => {
 
         /*test('isCorrectFormat_validFormat_returnsTrue', () => {
             const sut = new SSNHelper()
@@ -61,62 +65,62 @@ describe('SSNHelper Test suite', () => {
         })
     })
 
-    describe('isValidMonth Method', () => {
+    describe('isValidMonth method', () => {
 
         /*test('isValidMonth_monthAtMinBoundary_returnTrue', () => {
             const sut = new SSNHelper()
 
-            expect(sut.isValidMonth(validMonth)).toBe(true)
+            expect(sut.isValidMonth(monthAtMinBoundary)).toBe(true)
         })*/
 
         test('isValidMonth_monthBelowMinBoundary_returnsFalse', () => {
             const sut = new SSNHelper()
 
-            expect(sut.isValidMonth(invalidMonthBelowMinBoundary)).toBe(false)
+            expect(sut.isValidMonth(monthBelowMinBoundary)).toBe(false)
         })
 
         /*test('isValidMonth_monthAtMaxBoundary_returnTrue', () => {
             const sut = new SSNHelper()
 
-            expect(sut.isValidMonth(anotherValidMonth)).toBe(true)
+            expect(sut.isValidMonth(monthAtMaxBoundary)).toBe(true)
         })*/
 
         test('isValidMonth_monthAboveMaxBoundary_returnsFalse', () => {
             const sut = new SSNHelper()
 
-            expect(sut.isValidMonth(invalidMonthAboveMaxBoundary)).toBe(false)
+            expect(sut.isValidMonth(monthAboveMaxBoundary)).toBe(false)
         })
     })
 
-    describe('isValidDay Method', () => {
+    describe('isValidDay method', () => {
 
         /*test('isValidDay_dayAtMinBoundary_returnTrue', () => {
             const sut = new SSNHelper()
 
-            expect(sut.isValidDay(validDay)).toBe(true)
+            expect(sut.isValidDay(dayAtMinBoundary)).toBe(true)
         })*/
 
         /*test('isValidDay_dayBelowMinBoundary_returnFalse', () => {
             const sut = new SSNHelper()
 
-            expect(sut.isValidDay(invalidDayBelowMinBoundary)).toBe(false)
+            expect(sut.isValidDay(dayBelowMinBoundary)).toBe(false)
         })*/
 
         test('isValidDay_dayAtMaxBoundary_returnTrue', () => {
             const sut = new SSNHelper()
 
-            expect(sut.isValidDay(anotherValidDay)).toBe(true)
+            expect(sut.isValidDay(dayAtMaxBoundary)).toBe(true)
 
         })
 
         /*test('isValidDay_dayAboveMaxBoundary_returnFalse', () => {
             const sut = new SSNHelper()
 
-            expect(sut.isValidDay(invalidDayAboveMaxBoundary)).toBe(false)
+            expect(sut.isValidDay(dayAboveMaxBoundary)).toBe(false)
         })*/
     })
 
-    describe('luhnisCorrect', () => {
+    describe('luhnisCorrect method', () => {
 
         test('luhnisCorrect_validSSN_returnTrue', () => {
             const sut = new SSNHelper()

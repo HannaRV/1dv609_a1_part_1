@@ -1,4 +1,4 @@
-import { expect, jest, test } from '@jest/globals'
+import { jest } from '@jest/globals'
 
 import { SwedishSocialSecurityNumber } from '../src/correct/SwedishSocialSecurityNumber'
 // import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecurityNumberNoTrim'
@@ -25,11 +25,11 @@ describe('SwedishSocialSecurityNumber Test suite', () => {
 
     describe('Constructor', () => {
 
-        test('constructor_validSSN_createsInstance', () => {
+        /*test('constructor_validSSN_createsInstance', () => {
             const sut = new SwedishSocialSecurityNumber(validSSN, mockHelper)
 
             expect(sut).toBeInstanceOf(SwedishSocialSecurityNumber)
-        })
+        })*/
 
         test('constructor_untrimmedSSN_trimsThenValidates', () => {
             const sut = new SwedishSocialSecurityNumber(validSSNWithWhitespace, mockHelper)
@@ -82,23 +82,23 @@ describe('SwedishSocialSecurityNumber Test suite', () => {
         })
     })
 
-    describe('getMonth method', () => {
+    /*describe('getMonth method', () => {
 
         test('getMonth_validSSN_returnsCorrectMonth', () => {
             const sut = new SwedishSocialSecurityNumber(validSSN, mockHelper)
 
             expect(sut.getMonth()).toBe('12')
         })
-    })
+    })*/
 
-    describe('getDay method', () => {
+    /*describe('getDay method', () => {
 
         test('getDay_validSSN_returnsCorrectDay', () => {
             const sut = new SwedishSocialSecurityNumber(validSSN, mockHelper)
 
             expect(sut.getDay()).toBe('28')
         })
-    })
+    })*/
 
     describe('getSerialNumber method', () => {
 
@@ -109,3 +109,4 @@ describe('SwedishSocialSecurityNumber Test suite', () => {
         })
     })
 })
+

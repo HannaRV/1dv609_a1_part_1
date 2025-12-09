@@ -25,7 +25,7 @@ describe('Password class, test suite', () => {
 
     describe('Constructor - trim behavior', () => {
 
-        test('constructor_untrimmedPassword_createsSameHashAsTrimmed', () => {
+        test('constructor_untrimmedPassword_trimsCorrectly', () => {
             const untrimmedPassword = new Password(passwordWithSpaces)
             const trimmedPassword = new Password(validPassword)
 
@@ -38,11 +38,11 @@ describe('Password class, test suite', () => {
             /*test('constructor_atBoundaryLength_createsPassword', () => {
                 const password = new Password(atBoundaryMinLength)
 
-                expect(password).toBeInstanceOf(Password) // verifierar att objektet skapas och är av rätt typ
+                expect(password).toBeInstanceOf(Password)
             })*/
 
             test('constructor_justBelowBoundaryMinLength_throwsError', () => {
-                expect(() => new Password(justBelowBoundaryMinLength)).toThrow('Too short password') // Arrow function för att fördröja execution
+                expect(() => new Password(justBelowBoundaryMinLength)).toThrow('Too short password')
             })
 
             /*test('constructor_justAboveBoundaryMinLength_createsPassword', () => {
